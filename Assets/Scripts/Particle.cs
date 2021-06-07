@@ -40,8 +40,12 @@ public class Particle : MonoBehaviour
             //update linear positionc
             obje.position = Vector3d.addScaledVector(obje.position, obje.velocity, duration);
 
+            
             //obje.acceleration;
+            //resultingAcc'ye niye ihtiyaç var onu çýkaramadým burada hiç.
             resultingAcc = obje.acceleration;
+            resultingAcc = Vector3d.addScaledVector(resultingAcc, obje.forceAccum, obje.inverseMass);
+            obje.acceleration = resultingAcc;
 
             //Update linear velocity from the acceleration;
             obje.velocity = Vector3d.addScaledVector(obje.velocity, resultingAcc, duration);
@@ -50,6 +54,9 @@ public class Particle : MonoBehaviour
             obje.velocity.x *= Math.Pow(obje.damping, duration);
             obje.velocity.y *= Math.Pow(obje.damping, duration);
             obje.velocity.z *= Math.Pow(obje.damping, duration);
+
+            //clear the force accumulator
+            obje.forceAccum = new Vector3d(0, 0, 0);
 
         return obje;
         }

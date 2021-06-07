@@ -5,23 +5,26 @@ using REAL = System.Double;
 
 public class CycloneRunner : MonoBehaviour
 {
-    public Particle particleObje = new Particle();
+    public Particle particleObje; //burada new'le baþlamak bir hataya sebep oluyor gibi, garip bir durum gerçekten de, þimdilik vazgeçelim.
+    //public Particle particleObje = new Particle();
     // Start is called before the first frame update
     void Start()
     {
+
         // Assign particle script of the object Particle object
         particleObje=GetComponent<Particle>();
         // Assign initial game object position to Particle object
         particleObje.position = Vector3d.getPosition(transform.position);
 
         //diðer deðiþkenleri de baþtan tanýmlamak gerekiyor sonrasýnda bunlar hep 0 olarak baþlayacaklar
-        particleObje.velocity = new Vector3d(10, 20, 30); 
-        particleObje.acceleration = new Vector3d(0, 0, 0); 
+        particleObje.velocity = new Vector3d(0, 0, 0); 
+        particleObje.acceleration = new Vector3d(0, -10, 0);
+        particleObje.forceAccum = new Vector3d(5,0, 0); //bunlar tam sayý olunca çok etkili oluyorlar.
 
-
+       
     }
 
-    // Update is called once per frame
+    // Update is called once per frame  
     void Update()
     {
         //integrate object over time
