@@ -18,8 +18,8 @@ public class CycloneRunner : MonoBehaviour
 
         //diðer deðiþkenleri de baþtan tanýmlamak gerekiyor sonrasýnda bunlar hep 0 olarak baþlayacaklar
         particleObje.velocity = new Vector3d(0, 0, 0); 
-        particleObje.acceleration = new Vector3d(0, -10, 0);
-        particleObje.forceAccum = new Vector3d(5,0, 0); //bunlar tam sayý olunca çok etkili oluyorlar.
+        particleObje.acceleration = new Vector3d(0, 0, 0);
+        particleObje.forceAccum = new Vector3d(0, 0, 0); //bunlar tam sayý olunca çok etkili oluyorlar.
 
        
     }
@@ -30,7 +30,47 @@ public class CycloneRunner : MonoBehaviour
         //integrate object over time
         particleObje = Particle.integrate(0.01, particleObje);
         //apply new position to gameObject
-        transform.position = Vector3d.updatePosition(particleObje.position); 
+        transform.position = Vector3d.updatePosition(particleObje.position);
+
+        if (Input.GetKeyDown(KeyCode.Space) )
+        {
+            //apply force to object
+            //force uyguluyor ama kalýcý oluyor bu (doðru mu?)
+           // particleObje= Particle.AddForce(new Vector3d(0, 0.1, 0), particleObje);
+            particleObje.acceleration = new Vector3d(0, 1, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //apply force to object
+            //force uyguluyor ama kalýcý oluyor bu (doðru mu?)
+            //particleObje = Particle.AddForce(new Vector3d(0, -0.1, 0), particleObje);
+            particleObje.acceleration = new Vector3d(0, -1, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            //apply force to object
+            //force uyguluyor ama kalýcý oluyor bu (doðru mu?)
+            //particleObje = Particle.AddForce(new Vector3d(0, -0.1, 0), particleObje);
+            particleObje.acceleration = new Vector3d(0, 0, 0);
+            particleObje.velocity = new Vector3d(0, 0, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            //apply force to object
+            //force uyguluyor ama kalýcý oluyor bu (doðru mu?)
+            //particleObje = Particle.AddForce(new Vector3d(0, -0.1, 0), particleObje);
+            particleObje.acceleration = new Vector3d(1, 0, 0);
+            particleObje.velocity = new Vector3d(0, 0, 0);
+        }
+
+
+
+
+        //Debug.Log(particleObje.forceAccum.y);
+        Debug.Log(particleObje.acceleration.y);
 
 
     }
