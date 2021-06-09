@@ -25,7 +25,9 @@ public class SelectionManager : MonoBehaviour
             transSelected = null; //clear the selection
         }
 
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //get the location of the center of the 
+        var ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
+        //var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))

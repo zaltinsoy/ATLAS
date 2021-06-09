@@ -55,8 +55,11 @@ public class Particle : MonoBehaviour
         obje.velocity.y *= Math.Pow(obje.damping, duration);
         obje.velocity.z *= Math.Pow(obje.damping, duration);
 
-        //clear the force accumulator
+        //clear the force accumulator and acceleration
+        //acceleration'ý temizlemeyince sonrasýnda þiþtikçe þiþiyor tabi
+        //sonraki aþamaya sadece position ve velocity aktarýlýyor, acceleration bunlarla oynamak için dolaylý olarak iþ görüyor.
         obje.forceAccum = new Vector3d(0, 0, 0);
+        obje.acceleration = new Vector3d(0, 0, 0); 
 
         return obje;
     }
