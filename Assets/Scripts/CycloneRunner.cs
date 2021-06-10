@@ -59,7 +59,7 @@ public class CycloneRunner : MonoBehaviour
             particleObje.velocity = new Vector3d(0, 0, 0);
         }
 
-        Debug.Log(particleObje.acceleration.y);
+      //  Debug.Log(particleObje.acceleration.y);
 
 
     }

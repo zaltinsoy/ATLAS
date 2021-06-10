@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - gravy
+  - lazy
   layers:
   - Default
   - TransparentFX

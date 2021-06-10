@@ -8,20 +8,20 @@ using REAL = System.Double;
 
 public class Vector3d : MonoBehaviour
 {
-    
+
     public REAL x = new REAL();
     public REAL y = new REAL();
     public REAL z = new REAL();
-    
-    public Vector3d (REAL x1,REAL y1,REAL z1)
+
+    public Vector3d(REAL x1, REAL y1, REAL z1)
     {
         x = x1;
         y = y1;
         z = z1;
     }
 
-    public Vector3d ()
-    { 
+    public Vector3d()
+    {
 
     }
 
@@ -30,6 +30,19 @@ public class Vector3d : MonoBehaviour
     {
         return Math.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
     }
+
+    public static REAL disBetween(Vector3d v, Vector3d u)
+    {
+        return Math.Sqrt((v.x - u.x) * (v.x - u.x) + (v.y - u.y) * (v.y - u.y) + (v.z - u.z) * (v.z - u.z));
+    }
+    public static Vector3d normalize(Vector3d v)
+    {
+        double mag = magnitude(v);
+            return new Vector3d (v.x/mag, v.y/mag, v.z/mag);
+    }
+
+
+
     //Calculates square magnitude of a vector
 
     public static REAL SquareMagnitude(Vector3 v)

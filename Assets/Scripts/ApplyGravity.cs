@@ -15,5 +15,9 @@ public class ApplyGravity : MonoBehaviour
     void Update()
     {
         particleObje = Particle.AddForce(new Vector3d(0, -0.1, 0), particleObje);
+        //Vector3d a= Vector3d.normalize(particleObje.position);
+     //  / Debug.Log("x" + a.x);
+       // Debug.Log("y" + a.y);
+       // Debug.Log("z" + a.z);
     }
 }

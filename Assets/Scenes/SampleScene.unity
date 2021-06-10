@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 209455937}
   m_Layer: 0
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: lazy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 252532596}
   m_Layer: 0
   m_Name: Floor (1)
-  m_TagString: Untagged
+  m_TagString: lazy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 285425829}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: lazy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -475,6 +475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1291805860}
+  gravy: []
+  lazy: []
 --- !u!4 &451327681
 Transform:
   m_ObjectHideFlags: 0
@@ -517,7 +519,7 @@ GameObject:
   - component: {fileID: 469092342}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: lazy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -705,7 +707,7 @@ GameObject:
   - component: {fileID: 839340579}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: lazy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1071,7 +1073,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291805855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 27.9, z: 38.88}
+  m_LocalPosition: {x: 0, y: 35.02, z: 38.88}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1097,6 +1099,7 @@ MonoBehaviour:
   damping: 1
   mass: 1
   particleObject: {fileID: 0}
+  radius: 0
 --- !u!114 &1291805861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,7 +1140,7 @@ GameObject:
   - component: {fileID: 1784301745}
   m_Layer: 0
   m_Name: Wall (3)
-  m_TagString: Untagged
+  m_TagString: lazy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1273,6 +1276,7 @@ MonoBehaviour:
   damping: 1
   mass: 1
   particleObject: {fileID: 0}
+  radius: 0
 --- !u!65 &2074358409
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1343,7 +1347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074358406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 35.02, z: 38.88}
+  m_LocalPosition: {x: 0, y: 39.35, z: 44.46}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
