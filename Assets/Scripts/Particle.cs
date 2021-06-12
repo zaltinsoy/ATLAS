@@ -16,7 +16,7 @@ public class Particle : MonoBehaviour
     public Vector3d acceleration = new Vector3d();
     public REAL inverseMass = new REAL();
     public REAL damping = new REAL();
-    public REAL mass = new REAL();
+   // public REAL mass = new REAL();
     public GameObject particleObject = new GameObject();
     public REAL radius;
 
