@@ -7,11 +7,6 @@ public class GameSettings : MonoBehaviour
     public Particle ball = new Particle();
     public GameObject[] gravy;
     public GameObject[] lazy;
-
-
-    Particle parGravy = new Particle();
-    Particle parGravy2 = new Particle();
-
     //Define the particle, particle diye yeni þey tanýmlamýþtýk.
 
     //private List getAll = new List<Particle>();
@@ -49,65 +44,27 @@ public class GameSettings : MonoBehaviour
     private void Update()
     {
         //objelerin yakýnlaþmasýný bu þekilde ölçebiliyorum artýk en azýndan circular þeyler için
+        Particle parGravy = gravy[0].GetComponent<Particle>();
+        Particle parGravy2 = gravy[1].GetComponent<Particle>();
+        double fark=Vector3d.disBetween(parGravy.position, parGravy2.position);
 
-        double numMoving = gravy.Length;
-        double fark = new double();
-        for (int i = 0; i < numMoving; i++)
+        Vector3d conNormal = Vector3d.normalize(parGravy.position - parGravy2.position);
+        Vector3d relVelocity = parGravy.velocity - parGravy2.velocity;
+        double closingVelocity = Vector3d.scalarProduct(relVelocity, conNormal);
+        
+        Debug.Log("conx" + conNormal.x);
+        Debug.Log("cony" + conNormal.y);
+        Debug.Log("conz" + conNormal.z);
+
+        Debug.Log("closing"+closingVelocity);
+       //Debug.Log("Y" + closingVelocity.y);
+        //Debug.Log("Z" + closingVelocity.z);
+
+        if (fark < parGravy.radius)
         {
-            for (int j = 0; j < numMoving; j++)
-            {
-                if (i == j)
-                {
-                    continue;
-                }
-                parGravy = gravy[i].GetComponent<Particle>();
-                parGravy2 = gravy[j].GetComponent<Particle>();
-                fark = Vector3d.disBetween(parGravy.position, parGravy2.position);
-      
-                if (fark < parGravy.radius)
-                {
-
-                    /*
-Particle parGravy = gravy[0].GetComponent<Particle>();
-Particle parGravy2 = gravy[1].GetComponent<Particle>();
-double fark=Vector3d.disBetween(parGravy.position, parGravy2.position);
-*/
-
-
-
-                    Vector3d conNormal = Vector3d.normalize(parGravy.position - parGravy2.position);
-                    Vector3d relVelocity = parGravy.velocity - parGravy2.velocity;
-                    double sepVelocity = Vector3d.scalarProduct(relVelocity, conNormal);
-                    double restituion = 0;
-                    double newSepVelocity = -restituion * sepVelocity;
-                    double deltaVelocity = newSepVelocity - sepVelocity;
-
-
-
-
-                    Debug.Log(fark);
-                    Debug.Log(parGravy.radius);
-                    //Debug.Log("Y" + closingVelocity.y);
-                    //Debug.Log("Z" + closingVelocity.z);
-
-                    //yakýnlýk kontrolü burada.
-                    Debug.Log("booom");
-                    double totalInverseMass = parGravy.inverseMass + parGravy2.inverseMass;
-                    double impulse = deltaVelocity / totalInverseMass;
-                    Vector3d impulsePerIMass = impulse * conNormal;
-                    impulsePerIMass = impulsePerIMass;
-
-                    parGravy.velocity += parGravy.inverseMass * impulsePerIMass;
-                    parGravy2.velocity -= parGravy.inverseMass * impulsePerIMass;
-
-
-                }
-
-            }
+            Debug.Log("booom");
+            
         }
-
-
-     
 
          
         // double k=gravy.Length;
@@ -122,8 +79,6 @@ double fark=Vector3d.disBetween(parGravy.position, parGravy2.position);
 
 
     }
-
-
     /*
           //  Debug.Log("game settng update giriþ");
       getall.position = Vector3d.getPosition(getall.particleObject.transform.position);
