@@ -10,30 +10,37 @@ using REAL = System.Double;
 public class Particle : MonoBehaviour
 {
 
-    public Vector3d position = new Vector3d(); //private olunca sýkýntýya giriyoruz
-    public Vector3d velocity = new Vector3d();
-    public Vector3d forceAccum = new Vector3d();
-    public Vector3d acceleration = new Vector3d();
-    public REAL inverseMass = new REAL();
-    public REAL damping = new REAL();
-   // public REAL mass = new REAL();
-    public GameObject particleObject = new GameObject();
+    public Vector3d position;
+    public Vector3d velocity ;
+    public Vector3d forceAccum ;
+    public Vector3d acceleration ;
+    public REAL inverseMass ;
+    public REAL damping ;
+    public GameObject particleObject;
     public REAL radius;
+
+    // public REAL mass = new REAL();
 
     private void Start()
     {
       radius = transform.localScale.x; //çalýþýyor burasý, baþta tanýmlandýðý için sýkýntýlý sonrasýnda deðiþmiyor bu
+           Vector3d position = new Vector3d(); //private olunca sýkýntýya giriyoruz
+    Vector3d velocity = new Vector3d();
+    Vector3d forceAccum = new Vector3d();
+    Vector3d acceleration = new Vector3d();
+    REAL inverseMass = new REAL();
+    REAL damping = new REAL();
+    GameObject particleObject = new GameObject();
+
+    //atama yapacaksam eðer tüm atamalarý burada yapmak lazým!
+    // particleObject = gameObject; //particle'ýn içine kendi gameObject'ini atadýk, sonunda
+
+    //   ball = Particle.integrate(0.01, ball); // bu do
+    //  transform.position = Vector3d.updatePosition(position); //apply to gameObject
+    // position = Vector3d.getPosition(transform.position); //
 
 
-        //atama yapacaksam eðer tüm atamalarý burada yapmak lazým!
-        // particleObject = gameObject; //particle'ýn içine kendi gameObject'ini atadýk, sonunda
-
-        //   ball = Particle.integrate(0.01, ball); // bu do
-        //  transform.position = Vector3d.updatePosition(position); //apply to gameObject
-        // position = Vector3d.getPosition(transform.position); //
-        
-
-    }
+}
     private void Update()
     {
 
