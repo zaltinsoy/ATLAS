@@ -10,7 +10,6 @@ using REAL = System.Double;
 public class Particle : MonoBehaviour
 {
 
-<<<<<<< HEAD
     public Vector3d position;
     public Vector3d velocity ;
     public Vector3d forceAccum ;
@@ -18,16 +17,6 @@ public class Particle : MonoBehaviour
     public REAL inverseMass ;
     public REAL damping ;
     public GameObject particleObject;
-=======
-    public Vector3d position = new Vector3d(); //private olunca sýkýntýya giriyoruz
-    public Vector3d velocity = new Vector3d();
-    public Vector3d forceAccum = new Vector3d();
-    public Vector3d acceleration = new Vector3d();
-    public REAL inverseMass = new REAL();
-    public REAL damping = new REAL();
-    public REAL mass = new REAL();
-    public GameObject particleObject = new GameObject();
->>>>>>> parent of b31c963 (Collision detection & solver)
     public REAL radius;
 
     // public REAL mass = new REAL();
