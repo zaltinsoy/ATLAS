@@ -22,7 +22,20 @@ public class Particle : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< Updated upstream
       radius = transform.localScale.x; //çalýþýyor burasý, baþta tanýmlandýðý için sýkýntýlý sonrasýnda deðiþmiyor bu
+=======
+        //radius = transform.localScale.x; //çalýþýyor burasý, baþta tanýmlandýðý için sýkýntýlý sonrasýnda deðiþmiyor bu
+        radius = Math.Max(transform.localScale.x, Math.Max(transform.localScale.y, transform.localScale.z));
+  
+           Vector3d position = new Vector3d(); //private olunca sýkýntýya giriyoruz
+    Vector3d velocity = new Vector3d();
+    Vector3d forceAccum = new Vector3d();
+    Vector3d acceleration = new Vector3d();
+    REAL inverseMass = new REAL();
+    REAL damping = new REAL();
+    GameObject particleObject = new GameObject();
+>>>>>>> Stashed changes
 
 
         //atama yapacaksam eðer tüm atamalarý burada yapmak lazým!

@@ -20,6 +20,7 @@ public class CycloneRunner : MonoBehaviour
         particleObje.velocity = new Vector3d(0, 0, 0);
         particleObje.acceleration = new Vector3d(0, 0, 0);
         particleObje.forceAccum = new Vector3d(0, 0, 0); //bunlar tam sayý olunca çok etkili oluyorlar.
+        particleObje.damping = 0.99;
 
 
     }
@@ -27,8 +28,9 @@ public class CycloneRunner : MonoBehaviour
     // Update is called once per frame  
     void Update()
     {
-        //integrate object over time
-        particleObje = Particle.integrate(0.04, particleObje);
+        //integrate object over time - 0.04tü eskisi
+        particleObje = Particle.integrate(Time.deltaTime, particleObje);
+
         //apply new position to gameObject
         transform.position = Vector3d.updatePosition(particleObje.position);
 

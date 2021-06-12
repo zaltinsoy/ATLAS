@@ -14,6 +14,6 @@ public class ApplyGravityUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        particleObje = Particle.AddForce(new Vector3d(0, 0.1, 0), particleObje);
+        particleObje = Particle.AddForce(new Vector3d(0, 10, 0), particleObje);
     }
 }
