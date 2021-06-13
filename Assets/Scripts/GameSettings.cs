@@ -43,6 +43,7 @@ public class GameSettings : MonoBehaviour
 
     private void Update()
     {
+        /*
         //objelerin yakýnlaþmasýný bu þekilde ölçebiliyorum artýk en azýndan circular þeyler için
         Particle parGravy = gravy[0].GetComponent<Particle>();
         Particle parGravy2 = gravy[1].GetComponent<Particle>();
@@ -57,15 +58,16 @@ public class GameSettings : MonoBehaviour
         Debug.Log("conz" + conNormal.z);
 
         Debug.Log("closing"+closingVelocity);
+        */
        //Debug.Log("Y" + closingVelocity.y);
         //Debug.Log("Z" + closingVelocity.z);
-
+        /*
         if (fark < parGravy.radius)
         {
             Debug.Log("booom");
             
         }
-
+        */
          
         // double k=gravy.Length;
         // parGravy.position

@@ -39,13 +39,15 @@ public class Collision : MonoBehaviour
         //gravy = Object.FindObjectOfType<Particle>().gameObject;
 
         gravy = gravy.Concat(lazy).ToArray();
+        //üstteki çalýþýyor ama sonrasýnda ekleyeceðim.
+
         //gravy.Add(lazy);
         //rigidObjects = gravy + lazy;
 
 
         numMoving = gravy.Length;
         numStable = lazy.Length;
-        restitution = 1;
+        restitution = 0; //0 together, 1 bounce
 
         //Not working:
         //getall[0] = Object.FindObjectOfType<Particle>(); 
@@ -54,14 +56,16 @@ public class Collision : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < numMoving; i++)
+        for (int i = 0; i < numMoving; i++) //for (int i = 0; i < numMoving; i++)
         {
-            for (int j = 0; j < numMoving; j++)
+            for (int j = 0; j < numMoving; j++) //numMoving
             {
                 if (i == j)
                 {
                     continue;
                 }
+                Debug.Log("i=" + i);
+                Debug.Log("j=" + j);
                 parGravy = gravy[i].GetComponent<Particle>();
                 parGravy2 = gravy[j].GetComponent<Particle>();
                 difference = Vector3d.disBetween(parGravy.position, parGravy2.position);
@@ -80,26 +84,36 @@ public class Collision : MonoBehaviour
 
                 //if (difference < parGravy.radius)
                 //Aþaðýdaki içiçelik yöntemi çalýþtý gibi þu an
-                if (difference < parGravy.radius && xDif < xLim && yDif < yLim && zDif < zLim)
+                //if (difference < parGravy.radius && xDif < xLim && yDif < yLim && zDif < zLim)
+
+                //resting ve içiçeyi ayýrmaya çalýþsam?
+                if (xDif < xLim && yDif < yLim && zDif < zLim)
                 {
 
                     //get contact normal
                     Vector3d conNormal = Vector3d.normalize(parGravy.position - parGravy2.position);
                     //get relative velocity of the objects
 
-                    if (parGravy.inverseMass == 0||parGravy2.inverseMass == 0)
+                    if (parGravy.inverseMass == 0 || parGravy2.inverseMass == 0)
                     {
-                        if (minPen== xPenet)
+                        if (minPen == xPenet)
                         {
-                            conNormal = new Vector3d(1, 0, 0);
+                            if (conNormal.x < 0) { conNormal = new Vector3d(1, 0, 0); }
+                            else if (conNormal.x > 0) { conNormal = new Vector3d(-1, 0, 0); }
+                            else if (conNormal.x == 0) { conNormal = new Vector3d(0, 0, 0); }
                         }
                         if (minPen == yPenet)
                         {
-                            conNormal = new Vector3d(0, 1, 0);
+                            if (parGravy.velocity.y < 0) { conNormal = new Vector3d(0, 1, 0); }
+                            else if (parGravy.velocity.y > 0) { conNormal = new Vector3d(0, -1, 0); }
+                            else if (parGravy.velocity.y == 0) { conNormal = new Vector3d(0, 0, 0); }
                         }
+
                         if (minPen == zPenet)
                         {
-                            conNormal = new Vector3d(0, 0, 1);
+                            if (conNormal.z < 0) { conNormal = new Vector3d(0, 0, 1); }
+                            else if (conNormal.z > 0) { conNormal = new Vector3d(0, 0, -1); }
+                            else if (conNormal.z == 0) { conNormal = new Vector3d(0, 0, -1); }
                         }
 
                     }
@@ -136,7 +150,13 @@ public class Collision : MonoBehaviour
                         Vector3d impulsePerIMass = impulse * conNormal;
 
                         parGravy.velocity += parGravy.inverseMass * impulsePerIMass;
-                        parGravy2.velocity -= parGravy.inverseMass * impulsePerIMass;
+                        parGravy2.velocity -= parGravy2.inverseMass * impulsePerIMass;
+
+                        //apply new position to gameObject
+                        // gravy[0].transform.position = Vector3d.updatePosition(parGravy.position);
+                        //gravy[1].transform.position = Vector3d.updatePosition(parGravy2.position);
+
+
                     }
 
 

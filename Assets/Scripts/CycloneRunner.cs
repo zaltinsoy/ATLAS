@@ -28,12 +28,18 @@ public class CycloneRunner : MonoBehaviour
     // Update is called once per frame  
     void Update()
     {
+
         //integrate object over time - 0.04tü eskisi
         particleObje = Particle.integrate(Time.deltaTime, particleObje);
 
         //apply new position to gameObject
         transform.position = Vector3d.updatePosition(particleObje.position);
 
+       
+       
+        
+
+     
         //buradan aþaðýsý kuvvet uygulama kýsmý oldu hepten
         //anlýk kuvvet aþaðýdaki þekilde uygulanýyor:
         // particleObje= Particle.AddForce(new Vector3d(0, 0.1, 0), particleObje);
