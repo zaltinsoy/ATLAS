@@ -25,13 +25,17 @@ public class Particle : MonoBehaviour
     //  radius = transform.localScale.x; //çalýþýyor burasý, baþta tanýmlandýðý için sýkýntýlý sonrasýnda deðiþmiyor bu
          
            Vector3d position = new Vector3d(); //private olunca sýkýntýya giriyoruz
-    Vector3d velocity = new Vector3d();
-    Vector3d forceAccum = new Vector3d();
-    Vector3d acceleration = new Vector3d();
-    REAL inverseMass = new REAL();
-    REAL damping = new REAL();
+    velocity = new Vector3d();
+    forceAccum = new Vector3d();
+    acceleration = new Vector3d();
+    inverseMass = new REAL();
+        
+    damping = new REAL();
     GameObject particleObject = new GameObject();
         damping = 0.95;
+
+        if (mass == 0){inverseMass = mass;}
+        else { inverseMass = 1 / mass; }
 
         //atama yapacaksam eðer tüm atamalarý burada yapmak lazým!
         // particleObject = gameObject; //particle'ýn içine kendi gameObject'ini atadýk, sonunda

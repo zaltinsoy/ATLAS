@@ -89,7 +89,7 @@ public class Collision : MonoBehaviour
                 //resting ve içiçeyi ayýrmaya çalýþsam?
                 if (xDif < xLim && yDif < yLim && zDif < zLim)
                 {
-
+                    if (parGravy.inverseMass == 0 && parGravy2.inverseMass == 0) { continue; }
                     //get contact normal
                     Vector3d conNormal = Vector3d.normalize(parGravy.position - parGravy2.position);
                     //get relative velocity of the objects
@@ -113,7 +113,7 @@ public class Collision : MonoBehaviour
                         {
                             if (conNormal.z < 0) { conNormal = new Vector3d(0, 0, 1); }
                             else if (conNormal.z > 0) { conNormal = new Vector3d(0, 0, -1); }
-                            else if (conNormal.z == 0) { conNormal = new Vector3d(0, 0, -1); }
+                            else if (conNormal.z == 0) { conNormal = new Vector3d(0, 0, 0); }
                         }
 
                     }
