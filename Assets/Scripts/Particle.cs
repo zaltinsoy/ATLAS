@@ -15,35 +15,23 @@ public class Particle : MonoBehaviour
     public Vector3d forceAccum;
     public Vector3d acceleration;
     public REAL inverseMass;
-    public REAL damping ;
-    public REAL mass ;
+    public REAL damping;
+    public REAL mass;
     public GameObject particleObject;
-  //  public REAL radius;
 
     private void Start()
     {
-    //  radius = transform.localScale.x; //çalýþýyor burasý, baþta tanýmlandýðý için sýkýntýlý sonrasýnda deðiþmiyor bu
-         
-           Vector3d position = new Vector3d(); //private olunca sýkýntýya giriyoruz
-    velocity = new Vector3d();
-    forceAccum = new Vector3d();
-    acceleration = new Vector3d();
-    inverseMass = new REAL();
-        
-    damping = new REAL();
-    GameObject particleObject = new GameObject();
+        Vector3d position = new Vector3d();
+        velocity = new Vector3d();
+        forceAccum = new Vector3d();
+        acceleration = new Vector3d();
+        inverseMass = new REAL();
+        damping = new REAL();
+        GameObject particleObject = new GameObject();
         damping = 0.95;
 
-        if (mass == 0){inverseMass = mass;}
+        if (mass == 0) { inverseMass = mass; }
         else { inverseMass = 1 / mass; }
-
-        //atama yapacaksam eðer tüm atamalarý burada yapmak lazým!
-        // particleObject = gameObject; //particle'ýn içine kendi gameObject'ini atadýk, sonunda
-
-        //   ball = Particle.integrate(0.01, ball); // bu do
-        //  transform.position = Vector3d.updatePosition(position); //apply to gameObject
-        // position = Vector3d.getPosition(transform.position); //
-        
 
     }
     private void Update()
@@ -54,40 +42,57 @@ public class Particle : MonoBehaviour
     public static Particle integrate(REAL duration, Particle obje)
     {
         Vector3d resultingAcc = new Vector3d();
+
         //update linear positionc
         obje.position = Vector3d.addScaledVector(obje.position, obje.velocity, duration);
-
-
-        //obje.acceleration;
-        //resultingAcc'ye niye ihtiyaç var onu çýkaramadým burada hiç.
+        
+        
         resultingAcc = obje.acceleration;
         resultingAcc = Vector3d.addScaledVector(resultingAcc, obje.forceAccum, obje.inverseMass);
         obje.acceleration = resultingAcc;
 
         //Update linear velocity from the acceleration;
         obje.velocity = Vector3d.addScaledVector(obje.velocity, resultingAcc, duration);
-
+        
         //Impose drag
         obje.velocity.x *= Math.Pow(obje.damping, duration);
         obje.velocity.y *= Math.Pow(obje.damping, duration);
         obje.velocity.z *= Math.Pow(obje.damping, duration);
 
-        //clear the force accumulator and acceleration
-        //acceleration'ý temizlemeyince sonrasýnda þiþtikçe þiþiyor tabi
-        //sonraki aþamaya sadece position ve velocity aktarýlýyor, acceleration bunlarla oynamak için dolaylý olarak iþ görüyor.
         obje.forceAccum = new Vector3d(0, 0, 0);
-        obje.acceleration = new Vector3d(0, 0, 0); 
+        obje.acceleration = new Vector3d(0, 0, 0);
 
         return obje;
     }
 
     //to add force to the object
-    public static Particle AddForce(Vector3d force,Particle obje)
+    public static Particle AddForce(Vector3d force, Particle obje)
     {
         obje.forceAccum += force;
         return obje;
     }
+    public static Particle StopForce(Vector3d velo, Particle obje)
+    {
+        obje.velocity -= velo;
+        return obje;
+    }
 
+    public static Particle AddVelocity(Vector3d velo, Particle obje)
+    {
+        obje.velocity += velo;
+        return obje;
+    }
+    public static Particle MovePlayer(Vector3d move, Particle obje)
+    {
+        obje.position += move;
+        return obje;
+    }
+
+    public static Particle SteadyPlayer(Vector3d move, Particle obje)
+    {
+        obje.position += move;
+        return obje;
+    }
 
 
 }

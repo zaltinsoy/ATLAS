@@ -25,22 +25,31 @@ public class SelectionManager : MonoBehaviour
             transSelected = null; //clear the selection
         }
 
-        //get the location of the center of the 
+        //get the location of the center of the screen
         var ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
-        //var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
             //get tranform of the "hit" as selection
             var selection = hit.transform;
-           if (selection.CompareTag(selectableTag))
-           {
+
+            if (selection.CompareTag(selectableTag))
+            {
                 var selectionRenderer = selection.GetComponent<Renderer>();
+                var selectionGravity = selection.GetComponent<ChangeGravity>();
                 selectionRenderer.material = matSelected;
                 transSelected = selection;
+                if (Input.GetKeyDown(KeyCode.Keypad6)) { selectionGravity.gravDirection = 6; }
+                else if (Input.GetKeyDown(KeyCode.Keypad4)) { selectionGravity.gravDirection = 4; }
+                else if (Input.GetKeyDown(KeyCode.Keypad8)) { selectionGravity.gravDirection = 8; }
+                else if (Input.GetKeyDown(KeyCode.Keypad2)) { selectionGravity.gravDirection = 2; }
+                else if (Input.GetKeyDown(KeyCode.KeypadPlus)) { selectionGravity.gravDirection = 5; }
+                else if (Input.GetKeyDown(KeyCode.KeypadMinus)) { selectionGravity.gravDirection = 9; }
+                else if (Input.GetKeyDown(KeyCode.Keypad0)) { selectionGravity.gravDirection = 7; }
             }
-           
+
+
         }
     }
 

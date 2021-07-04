@@ -44,7 +44,6 @@ public class Vector3d : MonoBehaviour
 
 
     //Calculates square magnitude of a vector
-
     public static REAL SquareMagnitude(Vector3 v)
     {
         return v.x * v.x + v.y * v.y + v.z * v.z;
