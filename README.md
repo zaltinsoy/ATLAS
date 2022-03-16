@@ -4,6 +4,10 @@
 ## Summary
 Atlas is a 3D First Person Puzzle Game where the players will be in the role of the reincarnation of the Greek titan Atlas. The game will be consist of different test chambers. Player's aim is to reach the exit of  each chamber. These test chambers will consist 3D puzzles and the player will use the different gravity manipulation powers to solve these puzzles and reach the end of the level. Game is developed in Unity platform, and Cyclone Physics Engine[^cyc]  is used for the physics calculations in the game. Atlas developed as a term project in the MMI 541 Physics for Computer Games course. 
 
+Watch the video:
+
+[![Watch the video](https://user-images.githubusercontent.com/81522783/158582402-f1d7f7de-252c-4129-93fa-d956d1850c2b.jpg)](https://www.youtube.com/watch?v=5Bwc_DltdQE&ab_channel=ZaferAlt%C4%B1nsoy)
+
 * **Genre:** 3D First Person Single Player Puzzle Game
 * **Platform:** Windows PC
 * **Player's role:** Solve 3D puzzles with the ability of gravity manipulation
